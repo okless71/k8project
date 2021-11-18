@@ -6,8 +6,16 @@ Did the following:
 	helm repo add jenkinsrepo https://charts.jenkins.io
 	helm install jenkins jenkinsrepo/jenkins --set controller.serviceType=NodePort
 	minikube service jenkins
-2. Cloned https://github.com/avielb/rmqp-example
-3. Converted docker-compose yaml to Helm chart with tool kompose:
+	Added secret text (created in Github GGGH_SECRET, okless123, and put in Jenkins sesttings)
+2. Created "Continuous Integration Pipeline" job, with dind: !!!!!!!!!!!!!upload to jobs github!!!!
+	Does the following:
+		a. Creates 2 Docker images: docker-producer and docker-consumer
+		b. Clones my repo
+		c. Builds images
+		d. Push images to DockerHub (followed instructions here: https://medium.com/platformer-blog/lets-publish-a-docker-image-to-docker-hub-using-a-github-action-f0b17e5cceb3
+			Images are here: !!!!!!!!!!!!!upload images to DockerHub!!!!
+3. Cloned https://github.com/avielb/rmqp-example. 
+   Converted docker-compose yaml to Helm chart with tool kompose:
 	Install kompose:
 		curl -L https://github.com/kubernetes/kompose/releases/download/v1.24.0/kompose-windows-amd64.exe -o kompose.exe
 		chmod +x kompose
@@ -21,8 +29,5 @@ Did the following:
 			INFO Kubernetes file "docker-compose\\templates\\producer-deployment.yaml" created
 			INFO Kubernetes file "docker-compose\\templates\\rabbitmq-deployment.yaml" created
 			INFO chart created in "docker-compose\\"
-		Result: C:\GitWS\k8training\rmqp-example\helm 
-			Uploaded to: 
-4. Created "Continuous Integration Pipeline" job, with dind:
-	!!!!!!!!!!!!!upload to jobs github!!!!
-	
+		Result: ...\rmqp-example\helm 
+			Uploaded to: https://github.com/okless71/k8project.git under Helm directory
