@@ -12,7 +12,12 @@ Did the following:
 		a. Creates 2 Docker images: docker-producer and docker-consumer
 		b. Clones my repo
 		c. Builds images
-		d. Push images to DockerHub (followed instructions here: https://medium.com/platformer-blog/lets-publish-a-docker-image-to-docker-hub-using-a-github-action-f0b17e5cceb3
+		d. Push images to DockerHub:
+			Created access token in https://hub.docker.com/settings/security (see https://www.youtube.com/watch?v=alQQ84M4CYU)
+			can now do in Jenkins: docker login -u okless
+			Add this to my Jenkins credentials (user name okless and password c50a32a8-e47a-4534-a955-bedd7ba8bfd7, id okless-dockerhub)
+			
+			
 			Images are here: !!!!!!!!!!!!!upload images to DockerHub!!!!
 3. Cloned https://github.com/avielb/rmqp-example. 
    Converted docker-compose yaml to Helm chart with tool kompose:
