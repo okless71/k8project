@@ -1,0 +1,61 @@
+//Continuous Integration Pipeline
+
+def label = "docker-jenkins-${UUID.randomUUID().toString()}"
+def home = "/home/jenkins"
+def workspace = "${home}/workspace/build-docker-jenkins"
+def workdir = "${workspace}/src/localhost/docker-jenkins/"
+
+def ecrRepoName = "my-jenkins"
+def tag = "$ecrRepoName:latest"
+
+podTemplate(label: label,
+		containers: [
+				containerTemplate(name: 'docker-producer', image: 'docker', command: 'cat', ttyEnabled: true),
+				containerTemplate(name: 'docker-consumer', image: 'docker', command: 'cat', ttyEnabled: true),
+		],
+		volumes: [
+				hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
+		],
+) {
+	node(label) {
+        stage('Get sources') {
+            withCredentials([gitUsernamePassword(credentialsId: '0e954b8d-7b63-4826-83d0-23be890068b5', gitToolName: 'git-tool')]) {
+                sh '''   echo "Cloning repo on Jenkins..."
+                    git clone https://github.com/okless71/k8project.git
+                    cd k8project/producer
+                '''                
+            }
+        }
+		stage('Producer docker-producer Build') {
+			container('docker-producer') {
+                sh '''
+                cd '/home/jenkins/agent/workspace/Continuous Integration Pipeline/k8project/producer'
+                docker build -t okless/k8project:docker-producer .
+                '''
+                withCredentials([gitUsernamePassword(credentialsId: 'okless-dockerhub', gitToolName: 'git-tool')]) {
+                    sh '''
+                    cd '/home/jenkins/agent/workspace/Continuous Integration Pipeline/k8project/producer'
+                    docker login -u "okless" -p "Minitad01i" docker.io
+                    docker push okless/k8project:docker-producer
+                    '''                
+                }                
+			}
+			
+		}
+		stage('Consumer Docker Build') {
+			container('docker-consumer') {
+                sh '''
+                cd '/home/jenkins/agent/workspace/Continuous Integration Pipeline/k8project/consumer'
+                docker build -t okless/k8project:docker-consumer .
+                '''
+                withCredentials([gitUsernamePassword(credentialsId: 'okless-dockerhub', gitToolName: 'git-tool')]) {
+                    sh '''
+                    cd '/home/jenkins/agent/workspace/Continuous Integration Pipeline/k8project/consumer'
+                    docker login -u "okless" -p "Minitad01i" docker.io
+                    docker push okless/k8project:docker-consumer
+                    '''                
+                }               
+			}
+		}
+	}
+}
