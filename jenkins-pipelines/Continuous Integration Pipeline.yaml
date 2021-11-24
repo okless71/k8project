@@ -35,7 +35,7 @@ podTemplate(label: label,
                 withCredentials([gitUsernamePassword(credentialsId: 'okless-dockerhub', gitToolName: 'git-tool')]) {
                     sh '''
                     cd '/home/jenkins/agent/workspace/Continuous Integration Pipeline/k8project/producer'
-                    docker login -u "okless" -p "Minitad01i" docker.io
+                    docker login -u "okless" -p "XXXXXXXX" docker.io
                     docker push okless/k8project:docker-producer
                     '''                
                 }                
