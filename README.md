@@ -21,20 +21,21 @@ Did the following:
 			Images are here: https://hub.docker.com/repository/docker/okless/k8project
 	Questions:
 		- How to avoid having password in pipeline?
-3. Cloned https://github.com/avielb/rmqp-example. 
-   Converted docker-compose yaml to Helm chart with tool kompose:
-	Install kompose:
+3. Converted docker-compose yaml to Helm chart with tool kompose:
+	Cloned https://github.com/avielb/rmqp-example
+	Install kompose and convert compser files to helm chart:
 		curl -L https://github.com/kubernetes/kompose/releases/download/v1.24.0/kompose-windows-amd64.exe -o kompose.exe
-		chmod +x kompose
-		Copy compose file to location of kompose
-		cd /c/GitWS/k8training/rmqp-example
-		/c/temp/kompose.exe convert -c
-			WARN Service "consumer" won't be created because 'ports' is not specified
-			WARN Service "producer" won't be created because 'ports' is not specified
-			INFO Kubernetes file "docker-compose\\templates\\rabbitmq-service.yaml" created
-			INFO Kubernetes file "docker-compose\\templates\\consumer-deployment.yaml" created
-			INFO Kubernetes file "docker-compose\\templates\\producer-deployment.yaml" created
-			INFO Kubernetes file "docker-compose\\templates\\rabbitmq-deployment.yaml" created
-			INFO chart created in "docker-compose\\"
-		Result: ...\rmqp-example\helm 
-			Uploaded to: https://github.com/okless71/k8project.git under Helm directory
+	chmod +x kompose
+	Copy compose file to location of kompose
+	cd /c/GitWS/k8training/rmqp-example
+	/c/temp/kompose.exe convert -c
+		WARN Service "consumer" won't be created because 'ports' is not specified
+		WARN Service "producer" won't be created because 'ports' is not specified
+		INFO Kubernetes file "docker-compose\\templates\\rabbitmq-service.yaml" created
+		INFO Kubernetes file "docker-compose\\templates\\consumer-deployment.yaml" created
+		INFO Kubernetes file "docker-compose\\templates\\producer-deployment.yaml" created
+		INFO Kubernetes file "docker-compose\\templates\\rabbitmq-deployment.yaml" created
+		INFO chart created in "docker-compose\\"
+	Result: ...\rmqp-example\helm 
+		Uploaded to: https://github.com/okless71/k8project.git under Helm directory
+	
