@@ -31,13 +31,7 @@ Did the following:
 	Copy compose file to location of kompose
 	cd /c/GitWS/k8training/rmqp-example
 	/c/temp/kompose.exe convert -c
-		WARN Service "consumer" won't be created because 'ports' is not specified
-		WARN Service "producer" won't be created because 'ports' is not specified
-		INFO Kubernetes file "docker-compose\\templates\\rabbitmq-service.yaml" created
-		INFO Kubernetes file "docker-compose\\templates\\consumer-deployment.yaml" created
-		INFO Kubernetes file "docker-compose\\templates\\producer-deployment.yaml" created
-		INFO Kubernetes file "docker-compose\\templates\\rabbitmq-deployment.yaml" created
-		INFO chart created in "docker-compose\\"
-	Result: ...\rmqp-example\helm 
-		Uploaded to: https://github.com/okless71/k8project.git under Helm directory
+	Ran helm repo index (to create index.yaml file
+	See helm chart in: https://github.com/okless71/k8project/tree/main/charts
+	Uploaded to helm hub: https://artifacthub.io/
 	
