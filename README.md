@@ -18,7 +18,9 @@ Did the following:
 			can now do in Jenkins: docker login -u okless
 			Add this to my Jenkins credentials (user name okless and password c50a32a8-e47a-4534-a955-bedd7ba8bfd7, id okless-dockerhub)
 			See Jenkins Continuous Integration Pipeline here: https://github.com/okless71/k8project/blob/main/jenkins-pipelines/Continuous%20Integration%20Pipeline.yaml
-			Images are here: https://hub.docker.com/repository/docker/okless/k8project
+			Images are here: 
+				https://hub.docker.com/repository/docker/okless/docker-consumer
+				https://hub.docker.com/repository/docker/okless/docker-producer
 	Questions:
 		- How to avoid having password in pipeline?
 3. Converted docker-compose yaml to Helm chart with tool kompose:

@@ -30,13 +30,13 @@ podTemplate(label: label,
 			container('docker-producer') {
                 sh '''
                 cd '/home/jenkins/agent/workspace/Continuous Integration Pipeline/k8project/producer'
-                docker build -t okless/k8project:docker-producer .
+                docker build -t okless/docker-producer:1.0 .
                 '''
                 withCredentials([gitUsernamePassword(credentialsId: 'okless-dockerhub', gitToolName: 'git-tool')]) {
                     sh '''
                     cd '/home/jenkins/agent/workspace/Continuous Integration Pipeline/k8project/producer'
-                    docker login -u "okless" -p "XXXXXXXX" docker.io
-                    docker push okless/k8project:docker-producer
+                    docker login -u "okless" -p "XXXXXX" docker.io
+                    docker push okless/docker-producer:1.0
                     '''                
                 }                
 			}
@@ -46,13 +46,13 @@ podTemplate(label: label,
 			container('docker-consumer') {
                 sh '''
                 cd '/home/jenkins/agent/workspace/Continuous Integration Pipeline/k8project/consumer'
-                docker build -t okless/k8project:docker-consumer .
+                docker build -t okless/docker-consumer:1.0 .
                 '''
                 withCredentials([gitUsernamePassword(credentialsId: 'okless-dockerhub', gitToolName: 'git-tool')]) {
                     sh '''
                     cd '/home/jenkins/agent/workspace/Continuous Integration Pipeline/k8project/consumer'
-                    docker login -u "okless" -p "Minitad01i" docker.io
-                    docker push okless/k8project:docker-consumer
+                    docker login -u "okless" -p "XXXX" docker.io
+                    docker push okless/docker-consumer:1.0
                     '''                
                 }               
 			}
