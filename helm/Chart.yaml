@@ -1,8 +1,0 @@
-name: ohad-project
-description: A generated Helm Chart for ohad-project from Skippbox Kompose
-version: 0.0.1
-apiVersion: v1
-keywords:
-  - ohad-project
-sources:
-home:
