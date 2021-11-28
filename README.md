@@ -31,7 +31,11 @@ Did the following:
 	Copy compose file to location of kompose
 	cd /c/GitWS/k8training/rmqp-example
 	/c/temp/kompose.exe convert -c
-	Ran helm repo index (to create index.yaml file
-	See helm chart in: https://github.com/okless71/k8project/tree/main/charts
-	Uploaded to helm hub: https://artifacthub.io/
+	helm create deployk8
+	Override with kompose result
+	Upload helm chart to Githubas new repo: https://github.com/okless71/helm-charts
+4. Upload to helm hub: https://artifacthub.io/: 
+	Followed this tutorial to prepare for upload chart: https://tech.paulcz.net/blog/creating-a-helm-chart-monorepo-part-1/
+	Download cr from https://github.com/helm/chart-releaser/releases
+	
 	
