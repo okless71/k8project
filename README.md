@@ -34,8 +34,12 @@ Did the following:
 	helm create deployk8
 	Override with kompose result
 	Upload helm chart to Githubas new repo: https://github.com/okless71/helm-charts
-4. Upload to helm hub: https://artifacthub.io/: 
-	Followed this tutorial to prepare for upload chart: https://tech.paulcz.net/blog/creating-a-helm-chart-monorepo-part-1/
-	Download cr from https://github.com/helm/chart-releaser/releases
-	
-	
+4. Publish Helm Repository:
+	Followed this tutorial: https://tech.paulcz.net/blog/creating-a-helm-chart-monorepo-part-1/
+		Download cr from https://github.com/helm/chart-releaser/releases
+		>Helm package charts/deployk8 --destination .deploy
+		>c:\temp\cr.exe upload -o okless71 -r helm-charts -p .deploy -t XXXXXXXXX
+		>c:\temp\cr.exe index -i .\index.yaml -p .deploy --owner okless71 -r helm-charts -c https://github.com/okless71/helm-charts
+			Now can see new release in pages: https://okless71.github.io/helm-charts/index.yaml
+			See instructions how to use new chart: https://github.com/okless71/helm-charts/blob/main/README.md
+5. Created 
